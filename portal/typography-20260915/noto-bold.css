@@ -1,0 +1,62 @@
+/* 18100 font trial: real Bold faces, self-hosted, no synthetic bold/italic.
+   Noto Sans covers Latin; missing Hangul glyphs use the Noto Sans KR face.
+   This final stylesheet intentionally overrides the older section weights. */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('../../assets/fonts/noto-bold-20260915/NotoSans-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('../../assets/fonts/noto-bold-20260915/NotoSans-BoldItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('../../assets/fonts/noto-bold-20260915/NotoSansKR-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --portal-font: 'Noto Sans', 'Noto Sans KR', Arial, sans-serif;
+}
+:where(body, body *) {
+  font-family: var(--portal-font) !important;
+  font-weight: 700 !important;
+  font-synthesis: none;
+}
+body em {
+  font-style: italic;
+}
+/* Korean emphasis stays upright, as before; do not fabricate a KR italic. */
+html[lang='ko'] body em {
+  font-style: normal;
+}
+.film-copy .description:lang(ko),
+.film-controls > span:lang(ko) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+/* Preserve the heading's authored break with the wider Bold letterforms. */
+@media (max-width: 700px) {
+  .film-heading h2 {
+    font-size: clamp(25px, 7.9vw, 31px);
+    word-break: keep-all;
+  }
+  .film-heading h2 br {
+    display: initial;
+  }
+  .film-controls > div {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+  .film-controls button {
+    margin-left: 0;
+  }
+}

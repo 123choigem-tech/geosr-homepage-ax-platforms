@@ -1,0 +1,21 @@
+# Local credentials, tooling and generated test output must never be published.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+hosts.yml
+.github-upload/
+.local/
+node_modules/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+Thumbs.db
+playwright-report/
+test-results/
+.cache/
+.vscode/
